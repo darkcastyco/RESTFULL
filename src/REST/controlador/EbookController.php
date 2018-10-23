@@ -32,6 +32,12 @@ public function __construct() {
     $this->getDao ()->insert ( $Ebook );
     return array("sucess"=>"true","input"=>$json);
 	}
-	public function update($id, $json){}
-	public function delete($id){}
+	public function update($id, $json){
+
+
+  }
+	public function delete($id){
+
+
+  }
 }

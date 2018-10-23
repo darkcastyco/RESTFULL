@@ -41,7 +41,7 @@ abstract class AbstractController {
 
 		return $data;
 	}
-    abstract public  function insert($json);
+  abstract public  function insert($json);
 	abstract public  function update($id, $json);
 	abstract public  function delete($id);
 }
