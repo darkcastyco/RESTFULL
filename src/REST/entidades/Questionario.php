@@ -24,12 +24,16 @@ private $usuario;
  * @var string @Column(type="string", length=255)
  */
 private $Questionario;
-
-public function __construct($id = 0,$usuario = 0,$Questionario = ""){
+/**
+ *
+ * @var string @Column(type="string", length=255)
+ */
+private $Resultado;
+public function __construct($id = 0,$usuario = 0,$Questionario = "",$Resultado = ""){
 $this->id = $id;
 $this->usuario = $usuario;
 $this->Questionario = $Questionario;
-
+$this->Resultado = $Resultado;
 }
 
 public static function construct($array){
@@ -37,6 +41,7 @@ $obj = new Questionario();
 $obj->setId( $array['id']);
 $obj->setUsuario( $array['usuario']);
 $obj->setQuestionario( $array['Questionario']);
+$obj->setResultado( $array['Resultado']);
 return $obj;
 
 }
@@ -65,6 +70,16 @@ return $this->Questionario;
 public function setQuestionario($Questionario){
  $this->Questionario=$Questionario;
 }
+
+public function setResultado($Resultado){
+ $this->Resultado=$Resultado;
+}
+
+public function getResultado(){
+return $this->resultado;
+}
+
+
 public function equals($object){
 if($object instanceof Questionario){
 
@@ -84,6 +99,10 @@ return false;
 
 }
 
+if($this->resultado!=$object->resultado){
+return false;
+
+}
 return true;
 
 }
@@ -94,14 +113,15 @@ return false;
 }
 public function toString(){
 
- return "  [id:" .$this->id. "] [usuario:" .$this->usuario. "]  [Questionario:" .$this->Questionario. "]  " ;
+ return "  [id:" .$this->id. "] [usuario:" .$this->usuario. "]  [Questionario:" .$this->Questionario. "] [Resultado:" .$this->resultado. "]  " ;
 }
 
  public function toArray(){
    return [
   "id"=>$this->id,
    "usuario"=>$this->usuario->toArray(),
-   "Questionario"=>$this->Questionario
+   "Questionario"=>$this->Questionario,
+    "Resultado"=>$this->resultado
    ];
  }
 
