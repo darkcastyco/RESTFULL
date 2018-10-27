@@ -13,6 +13,8 @@ $app = new \Slim\Slim ();
 $usuarioCtrl = new UsuarioController();
 $ebookCtrl = new EbookController();
 $questionarioCtrl = new QuestionarioController();
+$relatorioCtrl = new RelatorioController();
+
 
 $app->get ( '/', function () {
 	echo json_encode ( [
@@ -21,6 +23,25 @@ $app->get ( '/', function () {
 	] );
 } );
 
+
+$app->get ( '/relatorio1(/)', function () use  ($relatorioCtrl){
+echo json_encode($relatorioCtrl->getrelatorio1($json));
+});
+
+$app->get ( '/relatorio2(/)', function () use  ($relatorioCtrl){
+echo json_encode($relatorioCtrl->getrelatorio2($json));
+});
+
+$app->get ( '/relatorio3(/)', function () use  ($relatorioCtrl){
+echo json_encode($relatorioCtrl->getrelatorio3($json));
+});
+
+
+/*
+get ($json)
+getrelatorio1($json)
+getrelatorio2($json)
+*/
 
 $app->get ( '/usuario(/(:id))', function ($id = null) use  ($usuarioCtrl){
 echo json_encode($usuarioCtrl->get($id));
@@ -56,6 +77,7 @@ $app->post ( '/Ebook(/)', function () use  ($EbookCtrl){
 $app->put ( '/Ebook(/)', function () {
 echo "PUT\n";
 } );
+
 
 $app->delete ( '/Ebook/:id', function () {
 	echo "DELETE\n";
